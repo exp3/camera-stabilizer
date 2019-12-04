@@ -59,7 +59,7 @@ inline rotation sensor::input(){
 }
 
 inline void servomotor::ServoAngle(targetAngle){
-    //
+    //ダンピングの実装
 
     //時間ごとの数値を代入して終了
     nowAngle = nextAngle;
