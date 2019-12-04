@@ -5,9 +5,9 @@ void setup();
 void loop();
 
 class rotation{
-    int x;
-    int y;
-    int z;
+    public:int x;
+    public:int y;
+    public:int z;
 };
 
 //サーボモータのクラス
@@ -19,7 +19,10 @@ class servomotor{
     int nowAngle;//現在の角度
     int nextAngle;//次の角度
     int targetAngle;//目標の角度
+    int changeAngle;//角度の変化量
     Servo myServo;
+
+    void ServoAngle(int);
 };
 
 //加速度センサのクラス
@@ -27,12 +30,16 @@ class sensor{
     rotation acceleration;
     rotation inputAcceleration;
     //呼び出されたときから1ms間の入力の平均値を取る。
-    void input();
+    rotation input();
 };
 
 
-inline rotation input(){
+inline rotation sensor::input(){
     int x[10], y[10], z[10];
+
+    inputAcceleration.x = 0;
+    inputAcceleration.y = 0;
+    inputAcceleration.z = 0;
 
     for(int i = 0; i < 10; i++){
         x[i] = (analogRead(0) + analogRead(3)) / 2;
@@ -48,4 +55,8 @@ inline rotation input(){
     }
 
     return inputAcceleration;
+}
+
+inline void servomotor::ServoAngle(targetAngle){
+    
 }
