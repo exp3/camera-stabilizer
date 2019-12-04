@@ -8,7 +8,7 @@ class rotation{
     int x;
     int y;
     int z;
-}
+};
 
 //サーボモータのクラス
 /*メンバ
@@ -20,7 +20,7 @@ class servomotor{
     int nextAngle;//次の角度
     int targetAngle;//目標の角度
     Servo myServo;
-}
+};
 
 //加速度センサのクラス
 class sensor{
@@ -28,7 +28,7 @@ class sensor{
     rotation inputAcceleration;
     //呼び出されたときから1ms間の入力の平均値を取る。
     void input();
-}
+};
 
 
 inline rotation input(){
