@@ -25,7 +25,7 @@ class servomotor{
 //加速度センサのクラス
 class sensor{
     rotation acceleration;
-
+    rotation inputAcceleration;
     //呼び出されたときから1ms間の入力の平均値を取る。
     void input();
 }
@@ -33,17 +33,18 @@ class sensor{
 
 inline rotation input(){
     int x[10], y[10], z[10];
-    rotation inputAcceleration;
-    inputAcceleration
 
     for(int i = 0; i < 10; i++){
-        x[i] = (analogRead() + analogRead()) / 2;
-        y[i] = (analogRead() + analogRead()) / 2;
-        z[i] = (analogRead() + analogRead()) / 2;
+        x[i] = (analogRead(0) + analogRead(3)) / 2;
+        y[i] = (analogRead(1) + analogRead(4)) / 2;
+        z[i] = (analogRead(2) + analogRead(5)) / 2;
     }
 
+    //微小区間の平均化
     for(int i = 0; i < 10; i++){
-        inputAcceleration. += [];
+        inputAcceleration.x += x[i];
+        inputAcceleration.y += y[i];
+        inputAcceleration.z += z[i];
     }
 
     return inputAcceleration;
