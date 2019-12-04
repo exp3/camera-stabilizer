@@ -19,7 +19,8 @@ class servomotor{
     int nowAngle;//現在の角度
     int nextAngle;//次の角度
     int targetAngle;//目標の角度
-    int changeAngle;//角度の変化量
+    int changeAngle;//前の角度の変化量
+    int nextChangeAngle;//次の角度の変化量
     Servo myServo;
 
     void ServoAngle(int);
@@ -58,5 +59,9 @@ inline rotation sensor::input(){
 }
 
 inline void servomotor::ServoAngle(targetAngle){
-    
+    //
+
+    //時間ごとの数値を代入して終了
+    nowAngle = nextAngle;
+    changeAngle = nextChangeAngle;
 }
