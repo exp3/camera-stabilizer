@@ -19,8 +19,8 @@ void sensor::input(){
 
     //微小区間の平均化
     for(int i = 0; i < 10; i++){
-        sensor::inputAcceleration.x += x[i];
-        sensor::inputAcceleration.y += y[i];
-        sensor::inputAcceleration.z += z[i];
+        sensor::inputAcceleration.rotationX += x[i];
+        sensor::inputAcceleration.rotationY += y[i];
+        sensor::inputAcceleration.rotationZ += z[i];
     }
 }

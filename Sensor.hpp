@@ -1,5 +1,5 @@
 #pragma once
-class rotation{
+typedef struct rotation{
     int rotationX;
     int rotationY;
     int rotationZ;
