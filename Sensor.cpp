@@ -1,25 +1,26 @@
 #include "Arduino.h"
 #include "Sensor.hpp"
 
-rotation sensor::input(){
+void sensor::input(){
     int x[10], y[10], z[10];
 
-    inputAcceleration.x = 0;
-    inputAcceleration.y = 0;
-    inputAcceleration.z = 0;
+    sensor::inputAcceleration.rotationX = 0;
+    sensor::inputAcceleration.rotationY = 0;
+    sensor::inputAcceleration.rotationZ = 0;
 
+    //二つのセンサーの入力値の管理
+    //10ms間で10回の値を取得
     for(int i = 0; i < 10; i++){
         x[i] = (analogRead(0) + analogRead(3)) / 2;
         y[i] = (analogRead(1) + analogRead(4)) / 2;
         z[i] = (analogRead(2) + analogRead(5)) / 2;
+        delay(1);
     }
 
     //微小区間の平均化
     for(int i = 0; i < 10; i++){
-        inputAcceleration.x += x[i];
-        inputAcceleration.y += y[i];
-        inputAcceleration.z += z[i];
+        sensor::inputAcceleration.x += x[i];
+        sensor::inputAcceleration.y += y[i];
+        sensor::inputAcceleration.z += z[i];
     }
-
-    return inputAcceleration;
 }

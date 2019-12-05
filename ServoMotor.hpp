@@ -1,3 +1,4 @@
+#pragma once
 #include "Arduino.h"
 #include "Servo.h"
 void setup();
@@ -14,7 +15,7 @@ class servomotor{
     int targetAngle;//目標の角度
     int changeAngle;//前の角度の変化量
     int nextChangeAngle;//次の角度の変化量
-    Servo Motor;
+    Servo Motor;//サーボモータオブジェクト
 
     void ServoAngle(int);
 };
