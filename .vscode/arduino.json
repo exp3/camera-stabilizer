@@ -1,5 +1,0 @@
-{
-    "board": "arduino:avr:uno",
-    "sketch": "servomotor.ino",
-    "port": "COM3"
-}
