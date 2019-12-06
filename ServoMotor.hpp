@@ -10,6 +10,8 @@ void loop();
 関数：
 */
 class servomotor{
+    public:
+    int pinNum;//ピン番号
     int nowAngle;//現在の角度
     int nextAngle;//次の角度
     int targetAngle;//目標の角度
@@ -22,7 +24,7 @@ class servomotor{
     int AngleAccel3;
 
     Servo Motor;//サーボモータオブジェクト
-    
+
     void ServoSetup(int);
     void ServoAngle(int);
     void Damping(int);
