@@ -1,6 +1,7 @@
 #include "Arduino.h"
 #include "Sensor.hpp"
 
+
 void sensor::input(){
     int x[10], y[10], z[10];
 
@@ -10,6 +11,7 @@ void sensor::input(){
 
     //二つのセンサーの入力値の管理
     //10ms間で10回の値を取得
+    //ハードに合わせて要調整
     for(int i = 0; i < 10; i++){
         x[i] = (analogRead(0) + analogRead(3)) / 2;
         y[i] = (analogRead(1) + analogRead(4)) / 2;
