@@ -2,24 +2,19 @@
 #include "ServoMotor.hpp"
 #include <Servo.h>
 
+
 //モーターの回転加速度の最大
-#define ANGLE_CHANGE_LIMIT (1)
+#define ANGLE_CHANGE_LIMIT 2
+
+float t_sqrtF(int);
 
 //5ms毎に呼び出し
 void servomotor::ServoAngle(int target){
-    //ダンピングの実装
-
     servomotor::targetAngle = target;
-    
-    if(/*角度が前の角度よりも大きい*/){
-        /*変化量の変化量を使い、変化量を求め、変化量をnextAngleに足す*/
-        servomotor::Damping(1);
-        
-    }else if(/*角度が前の角度よりも小さい*/){
-        servomotor::Damping(-1);
-    }
-    /*回転角の変化なし。必要無かったら消す*/
-    else{}
+
+    //ダンピングの実装
+    servomotor::Damping();
+
 
     servomotor::Motor.write(servomotor::nextAngle);
 
@@ -35,6 +30,24 @@ void servomotor::ServoSetup(int pin){
 
 }
 
-void servomotor::Damping(int BigOrSmall){
+void servomotor::Damping(void){
+    int v = servomotor::nextChangeAngle;
+    int A = servomotor::targetAngle;
+    int t;
 
+    t = 4 * (t_sqrtF(v * v + 2 * ANGLE_CHANGE_LIMIT * ) - v) / (ANGLE_CHANGE_LIMIT * ANGLE_CHANGE_LIMIT);
+
+    if(servomotor::nextChangeAngle > 0 && servomotor::nextChangeAngle > servomotor::targetAngle){
+    }
+}
+
+float t_sqrtF(int x){
+    float xHalf;
+    int tmp;
+    float xRes;
+    xHalf = 0.5f * x;
+    tmp = 0x5F3759DF - (x >> 1 ); //初期値
+    xRes = tmp;
+    xRes *= ( 1.5f - ( xHalf * xRes * xRes));
+    return xRes * x;
 }

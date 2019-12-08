@@ -27,5 +27,5 @@ class servomotor{
 
     void ServoSetup(int);
     void ServoAngle(int);
-    void Damping(int);
+    void Damping();
 };
