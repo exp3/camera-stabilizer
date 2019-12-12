@@ -33,7 +33,7 @@ void servomotor::ServoSetup(int pin){
 void servomotor::Damping(void){
     int v = servomotor::nextChangeAngle;
     int A = servomotor::targetAngle;
-    int t;
+    int  t;
 
     t = 4 * (t_sqrtF(v * v + 2 * ANGLE_CHANGE_LIMIT ) - v) / (ANGLE_CHANGE_LIMIT * ANGLE_CHANGE_LIMIT);
 
