@@ -35,7 +35,7 @@ void servomotor::Damping(void){
     int A = servomotor::targetAngle;
     int t;
 
-    t = 4 * (t_sqrtF(v * v + 2 * ANGLE_CHANGE_LIMIT * ) - v) / (ANGLE_CHANGE_LIMIT * ANGLE_CHANGE_LIMIT);
+    t = 4 * (t_sqrtF(v * v + 2 * ANGLE_CHANGE_LIMIT ) - v) / (ANGLE_CHANGE_LIMIT * ANGLE_CHANGE_LIMIT);
 
     if(servomotor::nextChangeAngle > 0 && servomotor::nextChangeAngle > servomotor::targetAngle){
     }

@@ -2,7 +2,7 @@
 #include "Sensor.hpp"
 
 
-void sensor::input(){
+rotation sensor::input(){
     int x[10], y[10], z[10];
 
     sensor::inputAcceleration.rotationX = 0;
@@ -25,4 +25,6 @@ void sensor::input(){
         sensor::inputAcceleration.rotationY += y[i];
         sensor::inputAcceleration.rotationZ += z[i];
     }
+
+    return sensor::inputAcceleration;
 }
