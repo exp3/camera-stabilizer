@@ -41,13 +41,15 @@ void servomotor::Damping(void){
     }
 }
 
-float t_sqrtF(int x){
+float t_sqrtF(int xi){
+    float x = xi;
+    
     float xHalf;
     int tmp;
     float xRes;
     xHalf = 0.5f * x;
-    tmp = 0x5F3759DF - (x >> 1 ); //初期値
-    xRes = tmp;
+    tmp = 0x5F3759DF - ( *(int*)&x >> 1 ); //初期値
+    xRes = *(float*)&tmp;
     xRes *= ( 1.5f - ( xHalf * xRes * xRes));
     return xRes * x;
 }
